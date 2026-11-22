@@ -1,0 +1,58 @@
+{
+  "nombre": "Contrato Iris",
+  "entrada_inferencia": {
+    "campos": [
+      {
+        "nombre": "sepal length (cm)",
+        "tipo": "float",
+        "required": true,
+        "nullable": false,
+        "min": 4.0,
+        "max": 8.0
+      },
+      {
+        "nombre": "sepal width (cm)",
+        "tipo": "float",
+        "required": true,
+        "nullable": false,
+        "min": 2.0,
+        "max": 4.5
+      },
+      {
+        "nombre": "petal length (cm)",
+        "tipo": "float",
+        "required": true,
+        "nullable": false,
+        "min": 1.0,
+        "max": 7.0
+      },
+      {
+        "nombre": "petal width (cm)",
+        "tipo": "float",
+        "required": true,
+        "nullable": false,
+        "min": 0.1,
+        "max": 2.5
+      }
+    ]
+  },
+  "variable_objetivo": {
+    "nombre": "species",
+    "tipo": "int",
+    "required": true,
+    "nullable": false,
+    "valores_permitidos": [0, 1, 2]
+  },
+  "ejemplo_valido": {
+    "sepal length (cm)": 5.1,
+    "sepal width (cm)": 3.5,
+    "petal length (cm)": 1.4,
+    "petal width (cm)": 0.2
+  },
+  "ejemplo_invalido": {
+    "sepal length (cm)": 9.5,
+    "sepal width (cm)": null,
+    "petal length (cm)": "largo",
+    "petal width (cm)": -1.0
+  }
+}

@@ -1,0 +1,17 @@
+# entorno
+venv/
+.env
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# mlflow / datos generados
+mlruns/
+mlflow.db
+data/processed/
+models/
+
+# sistema
+.DS_Store
