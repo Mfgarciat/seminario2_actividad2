@@ -10,7 +10,6 @@ __pycache__/
 # mlflow / datos generados
 mlruns/
 mlflow.db
-data/processed/
 models/
 
 # sistema
