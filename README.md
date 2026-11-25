@@ -14,6 +14,9 @@ actividad2_seminario/
 ├── validate_data.py     # valida tipos, nulos, rangos y required
 ├── data_contract.json   # contrato de entrada
 ├── romper_datos.py      # corrompe datos para probar la validacion
+├── ejemplos/
+│   ├── entrada_valida.json
+│   └── entrada_invalida.json
 ├── requirements.txt
 ├── readme.md
 ├── src/
@@ -73,7 +76,17 @@ Tambien trae un `ejemplo_valido` y un `ejemplo_invalido`.
 | petal width (cm) | float | No | 0.1 - 2.5 |
 | species | int | No | 0, 1, 2 |
 
-## Probar que la validacion falla
+## Ejemplos de inferencia (valido / invalido)
+
+```bash
+python validate_data.py --input ejemplos/entrada_valida.json
+python validate_data.py --input ejemplos/entrada_invalida.json
+```
+
+- La valida debe pasar.
+- La invalida debe fallar por 4 motivos: 9.5 fuera de rango, sepal width nulo, petal length no numerico y -1.0 bajo el minimo.
+
+## Probar que la validacion falla (romper CSV)
 
 ```bash
 python src/prepare.py

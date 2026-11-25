@@ -1,3 +1,4 @@
+import argparse
 import csv
 import json
 import sys
@@ -145,12 +146,46 @@ def validar_archivo(ruta, reglas):
     return errores
 
 
+def validar_json_entrada(ruta):
+    """Valida un JSON de inferencia (sin species)."""
+    path = Path(ruta)
+    if not path.exists():
+        print(f"ERROR: no existe {ruta}")
+        return 1
+
+    with open(path, encoding="utf-8") as f:
+        ejemplo = json.load(f)
+
+    errores = validate_inference_example(ejemplo)
+
+    print(f"Validando entrada: {ruta}")
+    if errores:
+        print("Validacion FALLIDA:")
+        for error in errores:
+            print(f"  - {error}")
+        return 1
+
+    print("Validacion OK")
+    return 0
+
+
 def main():
+    parser = argparse.ArgumentParser(description="Validacion de datos Iris")
+    parser.add_argument(
+        "--input",
+        help="JSON de entrada de inferencia (ej: ejemplos/entrada_valida.json)",
+    )
+    args = parser.parse_args()
+
     print("=== Etapa: validacion de datos ===")
 
     if not Path("data_contract.json").exists():
         print("ERROR: no se encontro data_contract.json")
         return 1
+
+    # si pasan --input, validamos ese JSON y listo
+    if args.input:
+        return validar_json_entrada(args.input)
 
     contrato = cargar_contrato()
     reglas = armar_reglas(contrato)
